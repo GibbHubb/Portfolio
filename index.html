@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Gibson - Portfolio</title>
+    <link rel="stylesheet" href="./resources/index.css">
+</head>
+<body>
+
+    <header>
+        <h1>Max Gibson</h1>
+        <nav>
+            <a href="projects.html">Projects</a>
+            <a href="resume.html">Resume</a>
+            <a href="history.html">History</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <!-- Add content for the home page -->
+        <div>
+            <h2>Welcome to my portfolio!</h2>
+            <p>Hello, and thank you for visiting my portfolio. I am currently enrolled in a comprehensive online Full Stack Development course, where I am immersing myself in the intricacies of modern web development. The course has provided me with a solid foundation in a wide array of technologies and frameworks, and I find great joy in applying this knowledge to real-world projects.</p>
+            
+            <p>This main page serves as the centerpiece of my portfolio, where I showcase my skills, understanding, and abilities.</p>
+            
+            <p>Not only will you find evidence of my technical proficiency here, but you'll also gain insights into my professional journey. As you explore the various sections, you'll have the opportunity to delve into my project portfolio, review my detailed resume, and learn more about my educational and professional background.</p>
+        
+            <p>Thank you for taking the time to explore my work. If you have any inquiries or would like to get in touch, please feel free to navigate to the 'Contact' section. I look forward to connecting with you. </p>
+        </div>
+        
+        <div class="big-image">
+            <img src="./resources/Background.jpg" alt="Big Image">
+        </div>
+    </section>
+
+    <footer>
+        <!-- Add images/icons representing your skills here -->
+        <img src="./resources/HTML.png" alt="HTML" class="footer">
+        <img src="./resources/CSS.jpg" alt="CSS" class="footer">
+        <img src="./resources/Java.jpg" alt="Java" class="footer">
+            <p>&copy; Max Gibson <span id="current-year"></span></p>
+        <!-- Add more images/icons for other skills as needed -->
+    </footer>
+
+</body>
+
+<!-- java secion -->
+<script>
+   const currentYear = new Date().getFullYear();
+document.getElementById('current-year').textContent = currentYear; 
+</script>
+
+
+
+</html>
+

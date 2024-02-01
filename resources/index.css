@@ -1,0 +1,92 @@
+/* index.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0c0032;
+    color: #ffffff; /* Light text */
+}
+
+header {
+    background-color: #190061;
+    color: #ffffff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+nav {
+    background-color: #240090;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-weight: bold; /* Make the navigation links bold */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+nav a:hover {
+    color: #8ee4af; /* Change color on hover */
+}
+
+section {
+    padding: 20px;
+}
+
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px; /* Increased padding for better spacing */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around; /* Adjusted spacing for better alignment */
+    align-items: center;
+}
+
+
+.footer {
+    width: 100px; /* Set a specific width */
+    height: 100px; /* Set a specific height */
+    margin: 0 10px; /* Add equal margin on both sides of each image */
+}
+
+
+/* Add a smooth transition for a more polished look */
+footer {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+#home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.big-image {
+    max-width: 50%;
+}
+
+.big-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Add a smooth transition for a more polished look */
+body, header, nav, section, footer {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
