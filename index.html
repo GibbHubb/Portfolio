@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Gibson - Portfolio</title>
     <link rel="stylesheet" href="./resources/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Ubuntu&family=Work+Sans:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -30,11 +33,25 @@
         
             <p>Thank you for taking the time to explore my work. If you have any inquiries or would like to get in touch, please feel free to navigate to the 'Contact' section. I look forward to connecting with you. </p>
         </div>
-        
+
         <div class="big-image">
             <img src="./resources/Background.jpg" alt="Big Image">
         </div>
+
+
     </section>
+
+    <div id="guessing-game">
+        <h3>A guessing game if you get bored!</h3>
+        <p>Can you guess the number between 1 and 10?</p>
+            <input type="number" id="user-guess" placeholder="Enter your guess">
+            <button onclick="checkGuess()">Submit Guess</button>
+        <p id="result"></p>
+        <button onclick="resetGame()">Reset Game</button>
+    </div>    
+
+     <!-- Guessing Game -->
+
 
     <footer>
         <!-- Add images/icons representing your skills here -->
@@ -51,7 +68,38 @@
 <script>
    const currentYear = new Date().getFullYear();
 document.getElementById('current-year').textContent = currentYear; 
+
+
+    // Guessing Game JavaScript
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+
+function resetGame() {
+    secretNumber = Math.floor(Math.random() * 10) + 1;
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = ''; // Clear the previous result
+    document.getElementById('user-guess').value = ''; // Clear the input field
+}
+
+function checkGuess() {
+    const userGuess = document.getElementById('user-guess').value;
+    const resultElement = document.getElementById('result');
+
+    if (userGuess === '') {
+        resultElement.textContent = 'Please enter a valid guess.';
+    } else {
+        const guess = parseInt(userGuess);
+        if (guess === secretNumber) {
+            resultElement.textContent = 'Congratulations! You guessed the correct number!';
+            resetGame(); // Call the reset function after correct guess
+        } else if (guess < 1 || guess > 10) {
+            resultElement.textContent = 'Please enter a number between 1 and 10.';
+        } else {
+            resultElement.textContent = `Sorry, the correct number was ${secretNumber}. Try again!`;
+        }
+    }
+}
 </script>
+
 
 
 

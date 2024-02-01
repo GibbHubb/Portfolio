@@ -1,7 +1,12 @@
 /* index.css */
 
+
+
+  * {
+    font-family: "Ubuntu";
+  }
+
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -38,7 +43,7 @@ nav a:hover {
     color: #8ee4af; /* Change color on hover */
 }
 
-section {
+section, #guessing-game{
     padding: 20px;
 }
 

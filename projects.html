@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Gibson - Projects</title>
-    <link rel="stylesheet" href="./resources/index.css"> <!-- Link to your existing CSS file -->
+    <link rel="stylesheet" href="./resources/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Ubuntu&family=Work+Sans:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -22,15 +25,6 @@
     <section>
         <h2>Projects</h2>
         <p>I will fill this section out as I complete more projects. Stay tuned for updates!</p>
-
-                    <!-- Guessing Game -->
-                    <div id="guessing-game">
-                        <h3>Guessing Game</h3>
-                        <p>Can you guess the number between 1 and 10?</p>
-                        <input type="number" id="user-guess" placeholder="Enter your guess">
-                        <button onclick="checkGuess()">Submit Guess</button>
-                        <p id="result"></p>
-                    </div>
         
     </section>
 
@@ -46,46 +40,34 @@
 </body>
   <!-- JavaScript section -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    const currentYear = new Date().getFullYear();
-    document.getElementById('current-year').textContent = currentYear;
-
-    const skills = document.querySelectorAll('.skill');
-
-    skills.forEach(skill => {
-        skill.addEventListener('mouseover', function () {
-            alert(`You are skilled in ${this.alt}`);
-        });
-    });
-
     // Guessing Game JavaScript
-    const secretNumber = Math.floor(Math.random() * 10) + 1;
-    
-    function checkGuess() {
-        const userGuess = document.getElementById('user-guess').value;
-        const resultElement = document.getElementById('result');
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
 
-        if (userGuess === '') {
-            resultElement.textContent = 'Please enter a valid guess.';
+function resetGame() {
+    secretNumber = Math.floor(Math.random() * 10) + 1;
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = ''; // Clear the previous result
+    document.getElementById('user-guess').value = ''; // Clear the input field
+}
+
+function checkGuess() {
+    const userGuess = document.getElementById('user-guess').value;
+    const resultElement = document.getElementById('result');
+
+    if (userGuess === '') {
+        resultElement.textContent = 'Please enter a valid guess.';
+    } else {
+        const guess = parseInt(userGuess);
+        if (guess === secretNumber) {
+            resultElement.textContent = 'Congratulations! You guessed the correct number!';
+            resetGame(); // Call the reset function after correct guess
+        } else if (guess < 1 || guess > 10) {
+            resultElement.textContent = 'Please enter a number between 1 and 10.';
         } else {
-            const guess = parseInt(userGuess);
-            if (guess === secretNumber) {
-                resultElement.textContent = 'Congratulations! You guessed the correct number!';
-            } else if (guess < 1 || guess > 10) {
-                resultElement.textContent = 'Please enter a number between 1 and 10.';
-            } else {
-                resultElement.textContent = `Sorry, the correct number was ${secretNumber}. Try again!`;
-            }
+            resultElement.textContent = `Sorry, the correct number was ${secretNumber}. Try again!`;
         }
     }
+}
+
 </script>
 </html>
