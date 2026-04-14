@@ -1,82 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Max Gibson - Resume</title>
-    <link rel="stylesheet" href="./resources/index.css"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Ubuntu&family=Work+Sans:wght@400;500;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Max Gibson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/style.css">
+  <style>
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .resume-sidebar { position: sticky; top: 88px; }
+    .sidebar-section { margin-bottom: 36px; }
+    .sidebar-section h4 {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .sidebar-section p, .sidebar-section li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .sidebar-section ul { list-style: none; padding: 0; }
+    .experience-item {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .experience-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .exp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .exp-title { font-size: 1rem; font-weight: 700; }
+    .exp-company { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+    .exp-date { font-size: 0.78rem; color: var(--faint); white-space: nowrap; padding-top: 4px; }
+    .exp-desc { color: var(--muted); font-size: 0.9rem; }
+    .exp-bullets { margin-top: 12px; padding: 0; list-style: none; }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 5px 0 5px 18px;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .resume-grid { grid-template-columns: 1fr; }
+      .resume-sidebar { position: static; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Max Gibson</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="resume.html">Resume</a>
-            <a href="history.html">History</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <nav class="topnav">
+    <div class="inner">
+      <a href="index.html" class="logo">Max<span>.</span></a>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section>
-        <h2>Welcome to my Resume Page</h2>
-        <p>Explore my professional background, education, and experience below. For more details or inquiries, feel free to contact me.</p>
+  <div class="container">
+    <div class="page-hero">
+      <p class="section-label">Background</p>
+      <h1>Resume</h1>
+      <p>Full-stack developer building production systems across web, mobile, and AI — from FastAPI backends to React Native apps and RAG pipelines.</p>
+    </div>
+  </div>
 
-        <h3>Contact Information</h3>
-        <ul>
-            <li>University of Queensland</li>
-            <li>+31685846074</li>
-            <li>Date of Birth: 26/03/1997</li>
-            <li>Email: max-gibson1997@hotmail.com</li>
-        </ul>
+  <div class="container" style="padding-bottom: 96px;">
+    <div class="resume-grid">
 
-        <h3>Professional Experience</h3>
-        <p>After Graduating from the University of Queensland with a Bachelor’s degree in Sports and Exercise Science (Honours), I started full time employment as the Head of Health and Wellbeing at a FinTech company called Mycelium. My role was to ensure all the employees were fit for work both physically and mentally. It was here where my interest in software development was first sparked. Since then, following my passion,  I have begun my transition into computer science and software engineering. 
-        I have now a complete understanding of CSS, HTML and Java and look forward to immersing myself in more back end development from here, while also still practicing my front ends skills</p>
+      <!-- ── Sidebar ── -->
+      <aside class="resume-sidebar">
+        <div class="sidebar-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact.html" style="color:var(--muted)">Send a message</a></li>
+            <li><a href="https://github.com/GibbHubb" target="_blank" rel="noopener" style="color:var(--muted)">github.com/GibbHubb</a></li>
+            <li>Netherlands</li>
+          </ul>
+        </div>
 
-        <h4>Experience Details</h4>
-        <ul>
-            <li>Head of Health and Wellbeing at Mycelium, Brisbane City (Nov 2020 - Feb 2023)</li>
-            <li>Personal Training, Sole Proprietorship, Brisbane City (June 2021 - Feb 2023)</li>
-            <li>Teacher Assistant/Sport Coach, Copthorne Prep School, Copthorne (Jan 2016 - Dec 2016)</li>
-        </ul>
+        <div class="sidebar-section">
+          <h4>Core Skills</h4>
+          <div class="tags" style="gap:6px;">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Python</span>
+            <span class="tag cyan">React</span>
+            <span class="tag cyan">TypeScript</span>
+            <span class="tag orange">React Native</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag green">Socket.io</span>
+            <span class="tag green">RAG</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Odoo 16</span>
+          </div>
+        </div>
 
-        <p>In both roles, it was imperative to uphold client relationships, be well-mannered and respectful, and continuously communicate. I had to manage my time effectively, be very driven and results-oriented, as well as have a high level of technological skills. Both roles made it imperative to be an independent worker but also work well with others both internal to the company and externally.</p>
+        <div class="sidebar-section">
+          <h4>Languages</h4>
+          <ul>
+            <li>Python — advanced</li>
+            <li>JavaScript / TypeScript — advanced</li>
+            <li>SQL — intermediate</li>
+            <li>HTML / CSS — intermediate</li>
+          </ul>
+        </div>
 
-        <p>I have recently moved to Europe with aims of furthering my experience and growing my career.</p>
+        <div class="sidebar-section">
+          <h4>Tooling</h4>
+          <ul>
+            <li>Git, Gitea, GitHub</li>
+            <li>Docker, Proxmox</li>
+            <li>Alembic, SQLAlchemy</li>
+            <li>Expo / EAS Build</li>
+            <li>Vite</li>
+          </ul>
+        </div>
+      </aside>
 
-        <h3>Education</h3>
-        <ul>
-            <li>Toowoomba Grammar School (2010 - 2014)</li>
-            <li>Exercise Sports Science Degree (Honours), University of Queensland (2017 - 2020)</li>
-            <li>Codam Coding University (2023)</li>
-            <li>Codecademy Online University (2023 - present)</li>
-        </ul>
+      <!-- ── Main ── -->
+      <main>
+        <section style="margin-bottom: 64px;">
+          <h2 style="margin-bottom: 32px;">Experience</h2>
 
-        <h3>Skills</h3>
-        <ul>
-            <li>Communication</li>
-            <li>Punctual and reliable</li>
-            <li>Team player</li>
-            <li>Research and technological skills</li>
-            <li>Personable</li>
-            <li>Detail-oriented with strong analytical skills</li>
-            <li>Efficient multitasking</li>
-            <li>Leader</li>
-        </ul>
-    </section>
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Full-Stack Developer</div>
+                <div class="exp-company">Huracan-Tech</div>
+              </div>
+              <span class="exp-date">2024 — Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Develop and maintain Odoo 16 custom addons — business requirement forms, AI chat integration, form-view CSS stability</li>
+              <li>Build and operate a self-hosted RAG stack on Proxmox: 8 LXC/VM nodes, OpenWebUI, pgvector, custom Python pipelines</li>
+              <li>Design Python data-extraction pipelines for legacy historical documents, outputting normalised CSV/JSON</li>
+              <li>Manage internal Gitea instance and infrastructure across a 4-host Proxmox cluster</li>
+            </ul>
+          </div>
 
-    <footer>
-        <!-- Add images/icons representing your skills here -->
-        <img src="./resources/HTML.png" alt="HTML" class="footer">
-        <img src="./resources/CSS.jpg" alt="CSS" class="footer">
-        <img src="./resources/Java.jpg" alt="Java" class="footer">
-        <!-- Add more images/icons for other skills as needed -->
-    </footer>
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Head of Health &amp; Wellbeing</div>
+                <div class="exp-company">Mycelium (FinTech), Brisbane</div>
+              </div>
+              <span class="exp-date">Nov 2020 — Feb 2023</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led company-wide health and wellbeing initiatives; exposure to software and product teams sparked a career pivot into development</li>
+              <li>Managed stakeholder relationships, internal programmes, and cross-team coordination</li>
+            </ul>
+          </div>
 
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Personal Trainer</div>
+                <div class="exp-company">Sole Proprietorship, Brisbane</div>
+              </div>
+              <span class="exp-date">Jun 2021 — Feb 2023</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Client programming, nutrition guidance, and session delivery</li>
+              <li>Independently managed scheduling, billing, and client communications</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Teacher Assistant &amp; Sports Coach</div>
+                <div class="exp-company">Copthorne Prep School, UK</div>
+              </div>
+              <span class="exp-date">Jan 2016 — Dec 2016</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Assisted classroom instruction and led sports coaching sessions</li>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 64px;">
+          <h2 style="margin-bottom: 32px;">Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="card skill-category">
+              <h4>Backend</h4>
+              <div class="tags">
+                <span class="tag">FastAPI</span>
+                <span class="tag">Python</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express</span>
+                <span class="tag">WebSockets</span>
+                <span class="tag">SQLAlchemy</span>
+                <span class="tag">Alembic</span>
+              </div>
+            </div>
+            <div class="card skill-category">
+              <h4>Frontend &amp; Mobile</h4>
+              <div class="tags">
+                <span class="tag cyan">React</span>
+                <span class="tag cyan">TypeScript</span>
+                <span class="tag cyan">Zustand</span>
+                <span class="tag cyan">Vite</span>
+                <span class="tag orange">React Native</span>
+                <span class="tag orange">Expo</span>
+              </div>
+            </div>
+            <div class="card skill-category">
+              <h4>Data &amp; AI</h4>
+              <div class="tags">
+                <span class="tag green">RAG Pipelines</span>
+                <span class="tag green">pgvector</span>
+                <span class="tag green">OpenWebUI</span>
+                <span class="tag green">LLM Integration</span>
+                <span class="tag">Python ETL</span>
+              </div>
+            </div>
+            <div class="card skill-category">
+              <h4>Infrastructure</h4>
+              <div class="tags">
+                <span class="tag">Proxmox</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Linux</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Gitea</span>
+                <span class="tag">Odoo 16</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: 32px;">Education</h2>
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">BSc Sports &amp; Exercise Science (Honours)</div>
+                <div class="exp-company">University of Queensland</div>
+              </div>
+              <span class="exp-date">2017 — 2020</span>
+            </div>
+            <p class="exp-desc">Graduated with Honours. Developed strong analytical, research, and data skills applied to human performance.</p>
+          </div>
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Software Engineering</div>
+                <div class="exp-company">Codam Coding University + Codecademy</div>
+              </div>
+              <span class="exp-date">2023 — Present</span>
+            </div>
+            <p class="exp-desc">
+              Codam (42 Network) for low-level fundamentals; Codecademy and self-directed projects for full-stack development
+              across Python, JavaScript/TypeScript, React, React Native, and systems design.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> Max Gibson. Built from scratch.</p>
+      <nav class="footer-links">
+        <a href="https://github.com/GibbHubb" target="_blank" rel="noopener">GitHub</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

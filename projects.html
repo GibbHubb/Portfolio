@@ -1,73 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Max Gibson - Projects</title>
-    <link rel="stylesheet" href="./resources/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Ubuntu&family=Work+Sans:wght@400;500;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Max Gibson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/style.css">
+  <style>
+    .project-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-detail:last-child { border-bottom: none; }
+    .project-detail.reversed { }
+    .project-detail-meta h3 { margin-bottom: 8px; }
+    .project-detail-meta .project-subtitle {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .project-detail-meta p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+    .feature-list { list-style: none; padding: 0; margin: 16px 0; }
+    .feature-list li {
+      padding: 8px 0;
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .feature-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .project-detail-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .tech-section h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    @media (max-width: 768px) {
+      .project-detail { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Max Gibson</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="resume.html">Resume</a>
-            <a href="history.html">History</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <nav class="topnav">
+    <div class="inner">
+      <a href="index.html" class="logo">Max<span>.</span></a>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section>
-        <h2>Projects</h2>
-        <p>I will fill this section out as I complete more projects. Stay tuned for updates!</p>
-        
-    </section>
+  <div class="container">
+    <div class="page-hero">
+      <p class="section-label">Work</p>
+      <h1>Projects</h1>
+      <p>A selection of full-stack projects built for real-world use — from mobile fitness apps to
+         AI-powered tools and production finance trackers.</p>
+    </div>
+  </div>
 
+  <div class="container" style="padding-bottom: 96px;">
 
-    <footer>
-        <!-- Add images/icons representing your skills here -->
-        <img src="./resources/HTML.png" alt="HTML" class="footer">
-        <img src="./resources/CSS.jpg" alt="CSS" class="footer">
-        <img src="./resources/Java.jpg" alt="Java" class="footer">
-        <!-- Add more images/icons for other skills as needed -->
-    </footer>
+    <!-- ── Finly ──────────────────────────────────────────── -->
+    <div class="project-detail" id="finly">
+      <div class="project-detail-meta">
+        <div class="project-icon" style="background: rgba(124,111,247,0.12); width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;">💰</div>
+        <div class="project-subtitle">Finance Tracker</div>
+        <h2>Finly</h2>
+        <p>
+          A personal finance tracker built end-to-end. Real-time transaction feeds push updates to
+          all connected clients via WebSockets — no page refresh needed. Full multi-currency
+          support converts amounts on-the-fly using live exchange rates.
+        </p>
+        <ul class="feature-list">
+          <li>Real-time WebSocket broadcast: new transactions appear instantly across all open tabs</li>
+          <li>Multi-currency: per-user base currency + live Frankfurter rates with 1-hour cache</li>
+          <li>JWT-authenticated WebSocket endpoint — tokens validated on handshake</li>
+          <li>Alembic-managed schema migrations; base_currency on users, currency on transactions</li>
+          <li>Zustand store with duplicate-safe pushTransaction for optimistic updates</li>
+        </ul>
+        <div class="tags" style="margin-top: 8px;">
+          <span class="tag">FastAPI</span>
+          <span class="tag cyan">React</span>
+          <span class="tag cyan">TypeScript</span>
+          <span class="tag cyan">Zustand</span>
+          <span class="tag green">WebSockets</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">SQLAlchemy</span>
+          <span class="tag">Alembic</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div>
+        <div class="project-detail-card">
+          <div class="tech-section">
+            <h4>Architecture</h4>
+            <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">
+              FastAPI backend with async route handlers. SQLAlchemy ORM with Alembic migrations.
+              React/TypeScript frontend using Zustand for global state. WebSocket connection manager
+              keeps a live list of connected clients and broadcasts on every write.
+            </p>
+          </div>
+          <div class="tech-section" style="margin-top:20px;">
+            <h4>Highlights</h4>
+            <ul class="feature-list">
+              <li>Exchange rate service proxies Frankfurter API with in-memory TTL cache</li>
+              <li>useTransactionSocket hook with exponential-backoff reconnect</li>
+              <li>Currency selector in dashboard header; per-row currency badge on transactions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- ── GymPal ─────────────────────────────────────────── -->
+    <div class="project-detail" id="gympal">
+      <div class="project-detail-meta">
+        <div class="project-icon" style="background: rgba(0,212,255,0.10); width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;">🏋️</div>
+        <div class="project-subtitle">Fitness Platform</div>
+        <h2>GymPal</h2>
+        <p>
+          A trainer-client fitness platform with live session broadcasting. Trainers start a session
+          and push exercises to individual clients in real time — clients receive them on their phone
+          even if the app is backgrounded, thanks to Expo push notifications.
+        </p>
+        <ul class="feature-list">
+          <li>Socket.io room-based routing: user:{id} for session invites, client_session:{id} for exercise pushes</li>
+          <li>Expo push notifications via expo-server-sdk — notifies clients when session starts or workout assigned</li>
+          <li>TV/group session broadcast: trainer registers a named session, TV screens join and receive workout updates</li>
+          <li>Graceful offline-first sync (G3 planned): workout data cached locally and synced on reconnect</li>
+          <li>JWT auth + token validation on app startup; last-route restoration across sessions</li>
+        </ul>
+        <div class="tags" style="margin-top: 8px;">
+          <span class="tag orange">React Native</span>
+          <span class="tag orange">Expo</span>
+          <span class="tag green">Socket.io</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag orange">Push Notifications</span>
+        </div>
+      </div>
+      <div>
+        <div class="project-detail-card">
+          <div class="tech-section">
+            <h4>Architecture</h4>
+            <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">
+              Express backend served over a raw HTTP server to support Socket.io alongside REST routes.
+              Room-based socket design keeps trainer→client targeting clean without storing socket IDs.
+              expo-server-sdk on the server handles token lookup and chunked push batching.
+            </p>
+          </div>
+          <div class="tech-section" style="margin-top:20px;">
+            <h4>Highlights</h4>
+            <ul class="feature-list">
+              <li>start_client_session fires both a socket event AND a push notification</li>
+              <li>Stale session cleanup runs every hour (12h TTL); heartbeat broadcasts every 10s</li>
+              <li>Client screens listen for session_started, exercise_pushed, session_ended events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Our Menu ───────────────────────────────────────── -->
+    <div class="project-detail" id="ourmenu">
+      <div class="project-detail-meta">
+        <div class="project-icon" style="background: rgba(52,211,153,0.10); width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;">🍽️</div>
+        <div class="project-subtitle">AI Restaurant App</div>
+        <h2>Our Menu</h2>
+        <p>
+          A recipe and meal-planning app that combines a restaurant menu interface with an AI backend.
+          Users can ask natural-language questions about the recipe library (RAG over pgvector),
+          generate personalised meal plans, and scan receipts to automatically populate a shopping list.
+        </p>
+        <ul class="feature-list">
+          <li>RAG pipeline: recipe library embedded into pgvector, similarity search on user queries</li>
+          <li>LLM-powered meal plan generation based on dietary preferences and available ingredients</li>
+          <li>Receipt scanning → OCR → structured shopping list, merged with existing pantry data</li>
+          <li>React Native mobile client with offline-capable recipe browsing</li>
+        </ul>
+        <div class="tags" style="margin-top: 8px;">
+          <span class="tag orange">React Native</span>
+          <span class="tag green">RAG</span>
+          <span class="tag green">pgvector</span>
+          <span class="tag green">LLM</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">OCR</span>
+        </div>
+      </div>
+      <div>
+        <div class="project-detail-card">
+          <div class="tech-section">
+            <h4>Architecture</h4>
+            <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">
+              pgvector extension on PostgreSQL stores recipe embeddings. A similarity search
+              retrieves relevant recipes before passing context to the LLM. Node.js backend
+              orchestrates the retrieval-augmented generation pipeline.
+            </p>
+          </div>
+          <div class="tech-section" style="margin-top:20px;">
+            <h4>Highlights</h4>
+            <ul class="feature-list">
+              <li>Vector similarity search on recipe descriptions for natural-language queries</li>
+              <li>Meal plan generation respects dietary constraints and weekly variety</li>
+              <li>Receipt scanning automates shopping list creation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AI Learning Path ───────────────────────────────── -->
+    <div class="project-detail" id="aipath">
+      <div class="project-detail-meta">
+        <div class="project-icon" style="background: rgba(251,146,60,0.10); width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;">🧭</div>
+        <div class="project-subtitle">AI Education Tool</div>
+        <h2>AI Learning Path Generator</h2>
+        <p>
+          An AI-powered tool that generates personalised learning curricula. Users describe their
+          goal and starting level; the app produces a structured, step-by-step learning path with
+          resource suggestions, streamed live as the LLM generates the response.
+        </p>
+        <ul class="feature-list">
+          <li>Streaming LLM responses via server-sent events — output appears word-by-word</li>
+          <li>Progress persistence: completed steps saved across sessions</li>
+          <li>Adapts to user's current skill level and desired depth</li>
+          <li>Clean React frontend with progress tracking UI</li>
+        </ul>
+        <div class="tags" style="margin-top: 8px;">
+          <span class="tag">Python</span>
+          <span class="tag cyan">React</span>
+          <span class="tag green">LLM Streaming</span>
+          <span class="tag green">SSE</span>
+          <span class="tag">FastAPI</span>
+        </div>
+      </div>
+      <div>
+        <div class="project-detail-card">
+          <div class="tech-section">
+            <h4>Architecture</h4>
+            <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">
+              FastAPI backend with streaming response endpoint using server-sent events.
+              Frontend consumes the stream and renders tokens progressively. Session data persists
+              completion state so users can resume where they left off.
+            </p>
+          </div>
+          <div class="tech-section" style="margin-top:20px;">
+            <h4>Highlights</h4>
+            <ul class="feature-list">
+              <li>Progressive rendering makes responses feel instantaneous</li>
+              <li>Structured output: module → topic → resource hierarchy</li>
+              <li>Step-level completion tracking with visual progress bar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> Max Gibson. Built from scratch.</p>
+      <nav class="footer-links">
+        <a href="https://github.com/GibbHubb" target="_blank" rel="noopener">GitHub</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
-  <!-- JavaScript section -->
-  <script>
-    // Guessing Game JavaScript
-    let secretNumber = Math.floor(Math.random() * 10) + 1;
-
-function resetGame() {
-    secretNumber = Math.floor(Math.random() * 10) + 1;
-    const resultElement = document.getElementById('result');
-    resultElement.textContent = ''; // Clear the previous result
-    document.getElementById('user-guess').value = ''; // Clear the input field
-}
-
-function checkGuess() {
-    const userGuess = document.getElementById('user-guess').value;
-    const resultElement = document.getElementById('result');
-
-    if (userGuess === '') {
-        resultElement.textContent = 'Please enter a valid guess.';
-    } else {
-        const guess = parseInt(userGuess);
-        if (guess === secretNumber) {
-            resultElement.textContent = 'Congratulations! You guessed the correct number!';
-            resetGame(); // Call the reset function after correct guess
-        } else if (guess < 1 || guess > 10) {
-            resultElement.textContent = 'Please enter a number between 1 and 10.';
-        } else {
-            resultElement.textContent = `Sorry, the correct number was ${secretNumber}. Try again!`;
-        }
-    }
-}
-
-</script>
 </html>

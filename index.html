@@ -1,107 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Max Gibson - Portfolio</title>
-    <link rel="stylesheet" href="./resources/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Ubuntu&family=Work+Sans:wght@400;500;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Gibson — Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Max Gibson</h1>
-        <nav>
-            <a href="projects.html">Projects</a>
-            <a href="resume.html">Resume</a>
-            <a href="history.html">History</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <nav class="topnav">
+    <div class="inner">
+      <span class="logo">Max<span>.</span></span>
+      <ul class="links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section id="home">
-        <!-- Add content for the home page -->
-        <div>
-            <h2>Welcome to my portfolio!</h2>
-            <p>Hello, and thank you for visiting my portfolio. I am currently enrolled in a comprehensive online Full Stack Development course, where I am immersing myself in the intricacies of modern web development. The course has provided me with a solid foundation in a wide array of technologies and frameworks, and I find great joy in applying this knowledge to real-world projects.</p>
-            
-            <p>This main page serves as the centerpiece of my portfolio, where I showcase my skills, understanding, and abilities.</p>
-            
-            <p>Not only will you find evidence of my technical proficiency here, but you'll also gain insights into my professional journey. As you explore the various sections, you'll have the opportunity to delve into my project portfolio, review my detailed resume, and learn more about my educational and professional background.</p>
-        
-            <p>Thank you for taking the time to explore my work. If you have any inquiries or would like to get in touch, please feel free to navigate to the 'Contact' section. I look forward to connecting with you. </p>
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for projects
+        </div>
+        <h1>Max Gibson<br><span class="gradient-text">Full-Stack Developer</span></h1>
+        <p class="subtitle">
+          I build production-ready applications across the stack — from FastAPI backends and
+          React frontends to React Native mobile apps, real-time sockets, and AI-powered features.
+          Based in the Netherlands, working at Huracan-Tech.
+        </p>
+        <div class="hero-cta">
+          <a href="projects.html" class="btn btn-primary">View Projects</a>
+          <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Stats ─────────────────────────────────────────────── -->
+  <section class="section" style="padding: 64px 0;">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat">
+          <div class="number">4+</div>
+          <div class="label">Production Projects</div>
+        </div>
+        <div class="stat">
+          <div class="number">10+</div>
+          <div class="label">Technologies</div>
+        </div>
+        <div class="stat">
+          <div class="number">2y+</div>
+          <div class="label">Professional Dev</div>
+        </div>
+        <div class="stat">
+          <div class="number">∞</div>
+          <div class="label">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Tech stack ────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">What I work with</p>
+      <h2 class="section-title">Tech Stack</h2>
+
+      <div class="skills-grid">
+        <div class="card skill-category">
+          <h4>Backend</h4>
+          <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Python</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">SQLAlchemy</span>
+            <span class="tag">Alembic</span>
+          </div>
         </div>
 
-        <div class="big-image">
-            <img src="./resources/Background.jpg" alt="Big Image">
+        <div class="card skill-category">
+          <h4>Frontend</h4>
+          <div class="tags">
+            <span class="tag cyan">React</span>
+            <span class="tag cyan">TypeScript</span>
+            <span class="tag cyan">Zustand</span>
+            <span class="tag cyan">Vite</span>
+            <span class="tag cyan">HTML/CSS</span>
+          </div>
         </div>
 
+        <div class="card skill-category">
+          <h4>Mobile</h4>
+          <div class="tags">
+            <span class="tag orange">React Native</span>
+            <span class="tag orange">Expo</span>
+            <span class="tag orange">Expo Push Notifications</span>
+            <span class="tag orange">AsyncStorage</span>
+          </div>
+        </div>
 
-    </section>
+        <div class="card skill-category">
+          <h4>Database</h4>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">pgvector</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Migrations</span>
+          </div>
+        </div>
 
-    <div id="guessing-game">
-        <h3>A guessing game if you get bored!</h3>
-        <p>Can you guess the number between 1 and 10?</p>
-            <input type="number" id="user-guess" placeholder="Enter your guess">
-            <button onclick="checkGuess()">Submit Guess</button>
-        <p id="result"></p>
-        <button onclick="resetGame()">Reset Game</button>
-    </div>    
+        <div class="card skill-category">
+          <h4>Real-time & AI</h4>
+          <div class="tags">
+            <span class="tag green">WebSockets</span>
+            <span class="tag green">Socket.io</span>
+            <span class="tag green">RAG Pipelines</span>
+            <span class="tag green">OpenWebUI</span>
+            <span class="tag green">LLM Integration</span>
+          </div>
+        </div>
 
-     <!-- Guessing Game -->
+        <div class="card skill-category">
+          <h4>DevOps & Other</h4>
+          <div class="tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Proxmox</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Odoo 16</span>
+            <span class="tag">Git</span>
+            <span class="tag">Gitea</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <div class="divider"></div>
 
-    <footer>
-        <!-- Add images/icons representing your skills here -->
-        <img src="./resources/HTML.png" alt="HTML" class="footer">
-        <img src="./resources/CSS.jpg" alt="CSS" class="footer">
-        <img src="./resources/Java.jpg" alt="Java" class="footer">
-            <p>&copy; Max Gibson <span id="current-year"></span></p>
-        <!-- Add more images/icons for other skills as needed -->
-    </footer>
+  <!-- ── Featured Projects ──────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Recent work</p>
+      <h2 class="section-title">Featured Projects</h2>
 
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon" style="background: rgba(124,111,247,0.12);">💰</div>
+            <h3>Finly</h3>
+          </div>
+          <p class="project-desc">
+            Personal finance tracker with real-time transaction feeds via WebSockets,
+            multi-currency support powered by live Frankfurter exchange rates, and a
+            clean React/TypeScript frontend backed by FastAPI + PostgreSQL.
+          </p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag cyan">React/TS</span>
+              <span class="tag green">WebSockets</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-links">
+              <a href="projects.html#finly">Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon" style="background: rgba(0,212,255,0.10);">🏋️</div>
+            <h3>GymPal</h3>
+          </div>
+          <p class="project-desc">
+            Fitness trainer platform with live session broadcasting via Socket.io,
+            push notifications through Expo, and a React Native mobile client.
+            Trainers push exercises to clients in real time; sessions persist offline.
+          </p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag orange">React Native</span>
+              <span class="tag green">Socket.io</span>
+              <span class="tag">Node.js</span>
+              <span class="tag cyan">Expo</span>
+            </div>
+            <div class="project-links">
+              <a href="projects.html#gympal">Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon" style="background: rgba(52,211,153,0.10);">🍽️</div>
+            <h3>Our Menu</h3>
+          </div>
+          <p class="project-desc">
+            Restaurant menu app enhanced with RAG over a recipe library using pgvector.
+            AI-powered meal plan generation and receipt scanning to build shopping lists.
+          </p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag orange">React Native</span>
+              <span class="tag green">RAG / pgvector</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <div class="project-links">
+              <a href="projects.html#ourmenu">Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon" style="background: rgba(251,146,60,0.10);">🧭</div>
+            <h3>AI Learning Path</h3>
+          </div>
+          <p class="project-desc">
+            Generates personalised learning paths using LLMs. Streaming responses with
+            server-sent events, progress persistence across sessions, and a clean UI
+            that guides users step-by-step through their chosen subject.
+          </p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag cyan">React</span>
+              <span class="tag green">LLM Streaming</span>
+            </div>
+            <div class="project-links">
+              <a href="projects.html#aipath">Details →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 40px; text-align: center;">
+        <a href="projects.html" class="btn btn-outline">All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> Max Gibson. Built from scratch.</p>
+      <nav class="footer-links">
+        <a href="https://github.com/GibbHubb" target="_blank" rel="noopener">GitHub</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
-<!-- java secion -->
-<script>
-   const currentYear = new Date().getFullYear();
-document.getElementById('current-year').textContent = currentYear; 
-
-
-    // Guessing Game JavaScript
-    let secretNumber = Math.floor(Math.random() * 10) + 1;
-
-function resetGame() {
-    secretNumber = Math.floor(Math.random() * 10) + 1;
-    const resultElement = document.getElementById('result');
-    resultElement.textContent = ''; // Clear the previous result
-    document.getElementById('user-guess').value = ''; // Clear the input field
-}
-
-function checkGuess() {
-    const userGuess = document.getElementById('user-guess').value;
-    const resultElement = document.getElementById('result');
-
-    if (userGuess === '') {
-        resultElement.textContent = 'Please enter a valid guess.';
-    } else {
-        const guess = parseInt(userGuess);
-        if (guess === secretNumber) {
-            resultElement.textContent = 'Congratulations! You guessed the correct number!';
-            resetGame(); // Call the reset function after correct guess
-        } else if (guess < 1 || guess > 10) {
-            resultElement.textContent = 'Please enter a number between 1 and 10.';
-        } else {
-            resultElement.textContent = `Sorry, the correct number was ${secretNumber}. Try again!`;
-        }
-    }
-}
-</script>
-
-
-
-
 </html>
-
