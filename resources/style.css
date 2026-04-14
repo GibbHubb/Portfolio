@@ -559,6 +559,120 @@ footer.site-footer {
   .skills-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Contribution heatmap ───────────────────────────────────────── */
+.heatmap-wrap {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.heatmap-table {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  min-width: 680px;
+}
+
+.heatmap-months {
+  display: flex;
+  padding-left: 32px;
+  margin-bottom: 4px;
+}
+
+.heatmap-month-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  flex: none;
+}
+
+.heatmap-body {
+  display: flex;
+  gap: 0;
+}
+
+.heatmap-days {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 6px;
+  padding-top: 2px;
+}
+
+.heatmap-day-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  height: 12px;
+  line-height: 12px;
+}
+
+.heatmap-weeks {
+  display: flex;
+  gap: 3px;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: transform 0.1s ease;
+  cursor: default;
+  position: relative;
+}
+
+.heatmap-cell:hover { transform: scale(1.4); z-index: 2; }
+
+.heatmap-cell[data-level="1"] { background: #c6def7; }
+.heatmap-cell[data-level="2"] { background: #7eb8e8; }
+.heatmap-cell[data-level="3"] { background: #3d8fd4; }
+.heatmap-cell[data-level="4"] { background: #1a6bb5; }
+.heatmap-cell[data-level="5"] { background: #0d4a8a; }
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  justify-content: flex-end;
+}
+
+.heatmap-legend-cells {
+  display: flex;
+  gap: 3px;
+}
+
+.heatmap-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heatmap-total {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.heatmap-total strong { color: var(--accent2); }
+
+.heatmap-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
 /* ── Page header (inner pages) ──────────────────────────────────── */
 .page-hero {
   padding: 80px 0 48px;

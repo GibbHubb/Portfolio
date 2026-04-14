@@ -260,6 +260,36 @@
 
   <div class="divider"></div>
 
+  <!-- ── Work Contributions ────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Day-to-day activity</p>
+      <h2 class="section-title">Work Contributions</h2>
+
+      <div class="card" style="padding: 32px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px;">
+          <div>
+            <h3 style="margin-bottom:4px;">Huracan-Tech — Private Gitea</h3>
+            <p style="color:var(--muted); font-size:0.85rem; margin:0;">
+              Production commits across Odoo addons, RAG infrastructure, internal tooling, and client projects.
+              No repo names or content — just raw activity.
+            </p>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; background:rgba(0,212,255,0.07); border:1px solid rgba(0,212,255,0.2); border-radius:8px; padding:8px 16px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span style="font-size:0.78rem; color:#00d4ff; font-weight:600;">Private work repo</span>
+          </div>
+        </div>
+
+        <div id="heatmap-container">
+          <div class="heatmap-loading" id="heatmap-loading">Loading contribution data…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- ── Footer ────────────────────────────────────────────── -->
   <footer class="site-footer">
     <div class="footer-inner">
@@ -274,6 +304,200 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Contribution Heatmap ──────────────────────────────────────
+    (async function buildHeatmap() {
+      const GITEA_URL = 'https://git.huracan-tech.nl/api/v1/users/max/heatmap';
+      const container  = document.getElementById('heatmap-container');
+      const loading    = document.getElementById('heatmap-loading');
+
+      // ── helpers ──
+      function daysBetween(a, b) {
+        return Math.round((b - a) / 86400000);
+      }
+
+      function toLevel(n) {
+        if (n === 0) return 0;
+        if (n <= 2)  return 1;
+        if (n <= 5)  return 2;
+        if (n <= 9)  return 3;
+        if (n <= 14) return 4;
+        return 5;
+      }
+
+      function isoDate(d) {
+        return d.toISOString().slice(0, 10);
+      }
+
+      function renderHeatmap(byDate, totalContributions) {
+        // Build 52-week grid ending today
+        const today   = new Date();
+        today.setHours(0,0,0,0);
+        // Start on the most recent Sunday, go back 52 weeks
+        const endDay  = new Date(today);
+        const startDay = new Date(today);
+        startDay.setDate(startDay.getDate() - (52 * 7) + 1);
+        // Align to Sunday of that week
+        const startDow = startDay.getDay(); // 0=Sun
+        startDay.setDate(startDay.getDate() - startDow);
+
+        // Build weeks array: array of 7-day arrays
+        const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const weeks = [];
+        let cur = new Date(startDay);
+        while (cur <= endDay) {
+          const week = [];
+          for (let d = 0; d < 7; d++) {
+            const key = isoDate(cur);
+            week.push({ date: key, count: byDate[key] || 0, dow: cur.getDay() });
+            cur.setDate(cur.getDate() + 1);
+          }
+          weeks.push(week);
+        }
+
+        // Month labels: figure out which column each month starts at
+        const monthLabels = [];
+        let lastMonth = -1;
+        weeks.forEach((week, wi) => {
+          const m = new Date(week[0].date).getMonth();
+          if (m !== lastMonth) {
+            monthLabels.push({ col: wi, label: MONTHS[m] });
+            lastMonth = m;
+          }
+        });
+
+        // Build DOM
+        const CELL_W = 12, GAP = 3;
+        const colPx  = CELL_W + GAP;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'heatmap-wrap';
+
+        // Month labels row
+        const monthRow = document.createElement('div');
+        monthRow.className = 'heatmap-months';
+        monthLabels.forEach((ml, i) => {
+          const span = document.createElement('span');
+          span.className = 'heatmap-month-label';
+          const nextCol  = monthLabels[i + 1] ? monthLabels[i + 1].col : weeks.length;
+          const spanCols = nextCol - ml.col;
+          span.style.width = (spanCols * colPx) + 'px';
+          span.textContent = ml.label;
+          monthRow.appendChild(span);
+        });
+
+        const body = document.createElement('div');
+        body.className = 'heatmap-body';
+
+        // Day labels (only Mon=1, Wed=3, Fri=5)
+        const dayCol = document.createElement('div');
+        dayCol.className = 'heatmap-days';
+        ['', 'Mon', '', 'Wed', '', 'Fri', ''].forEach(label => {
+          const s = document.createElement('span');
+          s.className = 'heatmap-day-label';
+          s.textContent = label;
+          dayCol.appendChild(s);
+        });
+
+        // Weeks
+        const weeksEl = document.createElement('div');
+        weeksEl.className = 'heatmap-weeks';
+
+        weeks.forEach(week => {
+          const weekEl = document.createElement('div');
+          weekEl.className = 'heatmap-week';
+          week.forEach(day => {
+            const cell = document.createElement('div');
+            cell.className = 'heatmap-cell';
+            const lvl = toLevel(day.count);
+            if (lvl > 0) cell.setAttribute('data-level', lvl);
+            cell.title = day.count === 0
+              ? `No contributions on ${day.date}`
+              : `${day.count} contribution${day.count > 1 ? 's' : ''} on ${day.date}`;
+            weekEl.appendChild(cell);
+          });
+          weeksEl.appendChild(weekEl);
+        });
+
+        body.appendChild(dayCol);
+        body.appendChild(weeksEl);
+
+        // Legend
+        const footer = document.createElement('div');
+        footer.className = 'heatmap-footer';
+
+        const total = document.createElement('span');
+        total.className = 'heatmap-total';
+        total.innerHTML = `<strong>${totalContributions.toLocaleString()}</strong> contributions in the last 12 months`;
+
+        const legend = document.createElement('div');
+        legend.className = 'heatmap-legend';
+        legend.innerHTML = `Less <div class="heatmap-legend-cells">
+          <div class="heatmap-cell" style="cursor:default;"></div>
+          <div class="heatmap-cell" data-level="1" style="cursor:default;"></div>
+          <div class="heatmap-cell" data-level="2" style="cursor:default;"></div>
+          <div class="heatmap-cell" data-level="3" style="cursor:default;"></div>
+          <div class="heatmap-cell" data-level="4" style="cursor:default;"></div>
+          <div class="heatmap-cell" data-level="5" style="cursor:default;"></div>
+        </div> More`;
+
+        footer.appendChild(total);
+        footer.appendChild(legend);
+
+        const table = document.createElement('div');
+        table.className = 'heatmap-table';
+        table.appendChild(monthRow);
+        table.appendChild(body);
+
+        wrap.appendChild(table);
+        wrap.appendChild(footer);
+
+        // Swap in
+        loading.remove();
+        container.appendChild(wrap);
+      }
+
+      function renderFallback(reason) {
+        loading.remove();
+        const el = document.createElement('div');
+        el.innerHTML = `
+          <div style="padding:20px 0; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:220px;">
+              <div style="font-size:2rem; font-weight:800; background:linear-gradient(135deg,#7c6ff7,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">541+</div>
+              <div style="color:var(--muted); font-size:0.85rem; margin-top:4px;">contributions in the last 12 months</div>
+            </div>
+            <div style="color:var(--faint); font-size:0.8rem; max-width:300px;">
+              Live graph requires CORS access to the private Gitea instance.
+              The activity above is from the work contribution log.
+            </div>
+          </div>`;
+        container.appendChild(el);
+      }
+
+      // ── Fetch ──
+      try {
+        const resp = await fetch(GITEA_URL, { cache: 'no-store' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        // data = [{timestamp: unix_seconds, contributions: n}, ...]
+
+        // Count last-12-months total and build byDate map
+        const now12 = Date.now() - 365 * 86400 * 1000;
+        const byDate = {};
+        let total = 0;
+        data.forEach(({ timestamp, contributions }) => {
+          const ms = timestamp * 1000;
+          const key = isoDate(new Date(ms));
+          byDate[key] = (byDate[key] || 0) + contributions;
+          if (ms >= now12) total += contributions;
+        });
+
+        renderHeatmap(byDate, total);
+      } catch (err) {
+        console.warn('[heatmap] Could not load Gitea data:', err.message);
+        renderFallback(err.message);
+      }
+    })();
   </script>
 </body>
 </html>
