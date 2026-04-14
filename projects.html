@@ -89,6 +89,60 @@
 
   <div class="container" style="padding-bottom: 96px;">
 
+    <!-- ── RET-RAG ───────────────────────────────────────── -->
+    <div class="project-detail" id="retrag">
+      <div class="project-detail-meta">
+        <div class="project-icon" style="background: rgba(124,111,247,0.12); width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;">🧠</div>
+        <div class="project-subtitle">AI Document Intelligence — Huracán Tech</div>
+        <h2>RET-RAG</h2>
+        <p>
+          A full production RAG (Retrieval-Augmented Generation) platform built internally at Huracán Technical Advisory.
+          Enables teams to upload complex PDF and technical documents, chunk and embed them semantically,
+          then query the knowledge base through a natural language interface powered by LLMs.
+        </p>
+        <ul class="feature-list">
+          <li>End-to-end RAG pipeline: document ingestion → Docling parsing → chunking → ChromaDB vector storage → LLM retrieval</li>
+          <li>FastAPI ingestion service with automated document parsing for complex PDFs and structured data</li>
+          <li>Custom React/TypeScript web interface for upload, monitoring, and interactive document querying</li>
+          <li>Deployed via Docker Compose on Proxmox VE with GPU-accelerated VMs for scalable model hosting</li>
+          <li>Multi-tenant architecture supporting concurrent users across isolated document collections</li>
+        </ul>
+        <div class="tags" style="margin-top: 8px;">
+          <span class="tag green">RAG Architecture</span>
+          <span class="tag green">LLMs</span>
+          <span class="tag green">ChromaDB</span>
+          <span class="tag green">Docling</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Python</span>
+          <span class="tag cyan">React</span>
+          <span class="tag cyan">TypeScript</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Proxmox VE</span>
+        </div>
+      </div>
+      <div>
+        <div class="project-detail-card">
+          <div class="tech-section">
+            <h4>Architecture</h4>
+            <p style="color:var(--muted);font-size:0.88rem;margin-bottom:20px;">
+              FastAPI backend handles ingestion and serves the retrieval API. Docling parses raw PDFs into
+              structured text; documents are chunked and embedded into ChromaDB. The React frontend
+              lets users upload files, track processing status, and query documents dynamically.
+              GPU-accelerated Proxmox VMs handle model inference at scale.
+            </p>
+          </div>
+          <div class="tech-section" style="margin-top:20px;">
+            <h4>Highlights</h4>
+            <ul class="feature-list">
+              <li>Semantic search across large document collections with sub-second retrieval</li>
+              <li>Automated ingestion pipeline handles complex, multi-page technical PDFs</li>
+              <li>Multi-tenant Docker Compose deployment on Proxmox with GPU passthrough</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ── Finly ──────────────────────────────────────────── -->
     <div class="project-detail" id="finly">
       <div class="project-detail-meta">
